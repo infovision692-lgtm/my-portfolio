@@ -6,7 +6,7 @@
     <title>TA designer | Freelance Web Designer & Developer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght=800;900&family=Inter:wght=300;400;600&display=swap" rel="stylesheet">
     
     <style>
         /* CORE RESET & HIGH-LEVEL VISUAL ENGINE */
@@ -79,6 +79,12 @@
             0% { color: var(--accent-purple); text-shadow: 0 0 15px rgba(168, 85, 247, 0.4); }
             50% { color: #ffffff; text-shadow: 0 0 20px rgba(255, 255, 255, 0.4); }
             100% { color: var(--accent-purple); text-shadow: 0 0 15px rgba(168, 85, 247, 0.4); }
+        }
+
+        @keyframes floatingAvatar {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); box-shadow: 0 25px 50px rgba(168, 85, 247, 0.2); }
+            100% { transform: translateY(0px); }
         }
 
         /* APPLICATION OF CHROMATIC ANIMATION TO HEADINGS */
@@ -157,13 +163,12 @@
             transform: scale(1.05);
         }
 
-        /* HERO SECTION */
+        /* HERO SECTION - DUAL COLUMN ARCHITECTURE */
         .hero {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
+            justify-content: space-between;
+            gap: 60px;
             min-height: 100vh;
             padding-top: 140px;
             position: relative;
@@ -176,20 +181,56 @@
             height: 400px;
             background: var(--accent-purple);
             filter: blur(150px);
-            opacity: 0.25;
-            top: 15%;
+            opacity: 0.2;
+            top: 20%;
+            left: 10%;
             z-index: -1;
+        }
+
+        .hero-content {
+            flex: 1;
+            text-align: left;
+        }
+
+        /* PREMIUM DESIGNER IMAGE ARCHITECTURE */
+        .hero-avatar-container {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            position: relative;
+        }
+
+        .avatar-wrapper {
+            position: relative;
+            width: 380px;
+            height: 440px;
+            border-radius: 20px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            animation: floatingAvatar 6s infinite ease-in-out;
+            overflow: hidden;
+        }
+
+        .avatar-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            filter: grayscale(10%) contrast(105%);
         }
 
         /* CHROMATIC HERO TEXT */
         .hero h1 {
             font-family: var(--font-display);
-            font-size: 84px;
+            font-size: 68px;
             font-weight: 900;
-            line-height: 1.05;
+            line-height: 1.1;
             margin-bottom: 24px;
-            max-width: 1000px;
-            letter-spacing: -3px;
+            letter-spacing: -2px;
             text-transform: uppercase;
             animation: globalColorShift 6s infinite ease-in-out;
         }
@@ -199,10 +240,9 @@
         }
 
         .hero p {
-            font-size: 22px;
+            font-size: 20px;
             color: var(--text-secondary);
-            max-width: 750px;
-            margin-bottom: 48px;
+            margin-bottom: 44px;
             font-weight: 300;
         }
 
@@ -211,7 +251,6 @@
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
-            justify-content: center;
         }
 
         .btn-portfolio {
@@ -309,7 +348,6 @@
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(168, 85, 247, 0.05);
         }
 
-        /* CONTINUOUSLY ANIMATING BACKGROUND IMAGES */
         @keyframes slowPanImage {
             0% { background-position: center 0%; }
             50% { background-position: center 100%; }
@@ -325,7 +363,6 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            /* Constant gentle animation loop simulating movement */
             animation: slowPanImage 20s infinite ease-in-out;
             transition: transform 0.6s cubic-bezier(0.2, 1, 0.2, 1);
         }
@@ -382,7 +419,6 @@
             font-weight: 300;
         }
 
-        /* ANIMATED CHROMATIC LIVE DEMO LINKS */
         @keyframes linkPulse {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -455,6 +491,34 @@
         }
 
         /* RESPONSIVE LAYOUT MATRIX */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                justify-content: center;
+                gap: 40px;
+                padding-top: 160px;
+            }
+            .hero-content {
+                text-align: center;
+            }
+            .hero-avatar-container {
+                justify-content: center;
+                width: 100%;
+            }
+            .avatar-wrapper {
+                width: 300px;
+                height: 350px;
+            }
+            .hero h1 {
+                font-size: 52px;
+                letter-spacing: -1.5px;
+            }
+            .btn-group {
+                justify-content: center;
+            }
+        }
+
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
@@ -464,10 +528,6 @@
             }
             .nav-links {
                 gap: 24px;
-            }
-            .hero h1 {
-                font-size: 52px;
-                letter-spacing: -1.5px;
             }
             .hero p {
                 font-size: 18px;
@@ -495,20 +555,29 @@
 <body>
 
     <nav>
-        <div class="logo">TA<span>designer</span></div>
-        <ul class="nav-links">
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#work">My Work</a></li>
-            <li><a href="#contact">Hire Me</a></li>
-        </ul>
-    </nav>
+    <div class="logo">TA<span>designer</span></div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#work">My Work</a></li>
+        <li><a href="#contact">Hire Me</a></li>
+    </ul>
+</nav>
 
     <header class="hero">
-        <h1>I Build Beautiful, High-Converting <span>Websites</span></h1>
-        <p>Hi, I'm TA designer. I am a Front-End Developer specializing in crafting clean responsive structures using clean semantic code.</p>
-        <div class="btn-group">
-            <a href="#work" class="btn-portfolio">See My Work</a>
-            <a href="https://wa.me/923261937058?text=Hello%20TA%20designer,%20I%20visited%20your%20portfolio%20and%20want%20to%20discuss%20a%20website%20project!" target="_blank" class="btn-whatsapp">Chat on WhatsApp</a>
+        <div class="hero-content">
+            <h1>I Build Beautiful, High-Converting <span>Websites</span></h1>
+            <p>Hi, I'm TA designer. I am a Front-End Developer specializing in crafting clean responsive structures using clean semantic code.</p>
+            <div class="btn-group">
+                <a href="#work" class="btn-portfolio">See My Work</a>
+                <a href="https://wa.me/923261937058?text=Hello%20TA%20designer,%20I%20visited%20your%20portfolio%20and%20want%20to%20discuss%20a%20website%20project!" target="_blank" class="btn-whatsapp">Chat on WhatsApp</a>
+            </div>
+        </div>
+        
+        <div class="hero-avatar-container">
+            <div class="avatar-wrapper">
+                <img src="my-pic.jpeg" alt="TA designer Portrait">
+            </div>
         </div>
     </header>
 
