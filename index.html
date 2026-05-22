@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TA designer | Freelance Web Designer & Developer</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght=800;900&family=Inter:wght=300;400;600&display=swap" rel="stylesheet">
@@ -22,8 +25,6 @@
         }
 
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
             font-family: var(--font-body);
             -webkit-font-smoothing: antialiased;
@@ -62,7 +63,7 @@
         }
 
         section {
-            padding: 140px 10%;
+            padding: 100px 0;
             position: relative;
             z-index: 1;
         }
@@ -83,14 +84,14 @@
 
         @keyframes floatingAvatar {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); box-shadow: 0 25px 50px rgba(168, 85, 247, 0.2); }
+            50% { transform: translateY(-12px); box-shadow: 0 25px 50px rgba(168, 85, 247, 0.3); }
             100% { transform: translateY(0px); }
         }
 
         /* APPLICATION OF CHROMATIC ANIMATION TO HEADINGS */
         .section-title {
             font-family: var(--font-display);
-            font-size: 46px;
+            font-size: 42px;
             font-weight: 900;
             margin-bottom: 60px;
             text-align: center;
@@ -109,33 +110,25 @@
             border-radius: 2px;
         }
 
-        /* FIXED GLASSMORPHIC NAVIGATION */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px 10%;
-            background: rgba(3, 0, 10, 0.7);
+        /* FIXED GLASSMORPHIC NAVIGATION VIA BOOTSTRAP */
+        .custom-navbar {
+            background: rgba(3, 0, 10, 0.75) !important;
             backdrop-filter: blur(24px) saturate(180%);
             -webkit-backdrop-filter: blur(24px) saturate(180%);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            z-index: 1000;
+            padding: 15px 0;
         }
 
         /* LOGO STYLE */
         .logo {
             font-family: var(--font-display);
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 900;
             letter-spacing: -0.5px;
             text-transform: uppercase;
             animation: globalColorShift 6s infinite ease-in-out;
-            display: inline-block;
-            cursor: default;
+            cursor: pointer;
+            text-decoration: none;
         }
 
         .logo span {
@@ -144,34 +137,34 @@
         }
 
         /* NAV LINKS WITH INTERACTIVE SHIFT */
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 40px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
+        .custom-navbar .nav-link {
             font-weight: 600;
             font-size: 14px;
             letter-spacing: 0.5px;
             animation: globalColorShift 6s infinite ease-in-out;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, color 0.3s ease;
+            padding: 8px 15px !important;
         }
 
-        .nav-links a:hover {
+        .custom-navbar .nav-link:hover {
             transform: scale(1.05);
+            color: #ffffff !important;
         }
 
-        /* HERO SECTION - DUAL COLUMN ARCHITECTURE */
+        /* Toggler Icon Customize */
+        .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+        }
+
+        /* HERO SECTION */
         .hero {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 60px;
             min-height: 100vh;
             padding-top: 140px;
-            position: relative;
+            display: flex;
+            align-items: center;
         }
 
         .hero::before {
@@ -187,23 +180,11 @@
             z-index: -1;
         }
 
-        .hero-content {
-            flex: 1;
-            text-align: left;
-        }
-
-        /* PREMIUM DESIGNER IMAGE ARCHITECTURE */
-        .hero-avatar-container {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            position: relative;
-        }
-
+        /* PREMIUM IMAGE ARCHITECTURE WITH IMMUTABLE FALLBACKS */
         .avatar-wrapper {
             position: relative;
-            width: 380px;
+            width: 100%;
+            max-width: 380px;
             height: 440px;
             border-radius: 20px;
             padding: 10px;
@@ -213,6 +194,7 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
             animation: floatingAvatar 6s infinite ease-in-out;
             overflow: hidden;
+            margin: 0 auto;
         }
 
         .avatar-wrapper img {
@@ -226,10 +208,9 @@
         /* CHROMATIC HERO TEXT */
         .hero h1 {
             font-family: var(--font-display);
-            font-size: 68px;
+            font-size: 58px;
             font-weight: 900;
             line-height: 1.1;
-            margin-bottom: 24px;
             letter-spacing: -2px;
             text-transform: uppercase;
             animation: globalColorShift 6s infinite ease-in-out;
@@ -240,24 +221,17 @@
         }
 
         .hero p {
-            font-size: 20px;
+            font-size: 19px;
             color: var(--text-secondary);
-            margin-bottom: 44px;
             font-weight: 300;
         }
 
-        /* INTERACTIVE BUTTONS */
-        .btn-group {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
+        /* INTERACTIVE BUTTON SYSTEM */
         .btn-portfolio {
             display: inline-block;
             background: var(--text-primary);
-            color: #03000a;
-            padding: 18px 42px;
+            color: #03000a !important;
+            padding: 16px 36px;
             border-radius: 4px;
             text-decoration: none;
             font-weight: 600;
@@ -268,8 +242,8 @@
         }
 
         .btn-portfolio:hover {
-            background: transparent;
-            color: var(--text-primary);
+            background: transparent !important;
+            color: var(--text-primary) !important;
             transform: translateY(-4px);
             box-shadow: 0 15px 30px rgba(255, 255, 255, 0.1);
         }
@@ -278,7 +252,7 @@
             display: inline-block;
             background: rgba(255, 255, 255, 0.03);
             color: var(--text-primary);
-            padding: 18px 42px;
+            padding: 16px 36px;
             border-radius: 4px;
             text-decoration: none;
             font-weight: 600;
@@ -292,30 +266,23 @@
         .btn-whatsapp:hover {
             border-color: var(--accent-green);
             background-color: rgba(37, 211, 102, 0.08);
+            color: #white;
             transform: translateY(-4px);
             box-shadow: 0 15px 30px rgba(37, 211, 102, 0.15);
         }
 
         /* SKILLS TAGS */
-        .skills-container {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
         .skill-tag {
             background: rgba(255, 255, 255, 0.02);
             color: var(--text-primary);
-            padding: 16px 32px;
+            padding: 14px 28px;
             border-radius: 4px;
             font-weight: 600;
-            font-size: 15px;
+            font-size: 14px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             transition: all 0.4s cubic-bezier(0.2, 1, 0.2, 1);
+            display: inline-block;
         }
 
         .skill-tag:hover {
@@ -325,14 +292,7 @@
             transform: translateY(-2px);
         }
 
-        /* PORTFOLIO GRID */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 50px;
-            margin-top: 20px;
-        }
-
+        /* PORTFOLIO MATRIX */
         .project-card {
             background: rgba(10, 5, 22, 0.4);
             border-radius: 12px;
@@ -340,6 +300,7 @@
             border: 1px solid rgba(255, 255, 255, 0.04);
             backdrop-filter: blur(20px);
             transition: all 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+            height: 100%;
         }
 
         .project-card:hover {
@@ -399,13 +360,13 @@
         }
 
         .project-info {
-            padding: 40px;
+            padding: 35px;
         }
 
         .project-info h3 {
             font-family: var(--font-display);
             margin-bottom: 12px;
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 800;
             letter-spacing: -0.5px;
             animation: globalColorShift 6s infinite ease-in-out;
@@ -448,10 +409,6 @@
         }
 
         /* CONTACT SECTION */
-        #contact {
-            position: relative;
-        }
-
         #contact::before {
             content: '';
             position: absolute;
@@ -466,21 +423,14 @@
             z-index: -1;
         }
 
-        .contact-container {
-            max-width: 750px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
         .contact-container p {
             color: var(--text-secondary);
             font-size: 22px;
-            margin-bottom: 48px;
             font-weight: 300;
         }
 
         footer {
-            padding: 50px 20px;
+            padding: 40px 20px;
             text-align: center;
             font-size: 13px;
             color: rgba(255, 255, 255, 0.3);
@@ -490,151 +440,123 @@
             text-transform: uppercase;
         }
 
-        /* RESPONSIVE LAYOUT MATRIX */
-        @media (max-width: 992px) {
-            .hero {
-                flex-direction: column-reverse;
-                text-align: center;
-                justify-content: center;
-                gap: 40px;
-                padding-top: 160px;
-            }
-            .hero-content {
-                text-align: center;
-            }
-            .hero-avatar-container {
-                justify-content: center;
-                width: 100%;
-            }
-            .avatar-wrapper {
-                width: 300px;
-                height: 350px;
-            }
-            .hero h1 {
-                font-size: 52px;
-                letter-spacing: -1.5px;
-            }
-            .btn-group {
-                justify-content: center;
-            }
-        }
-
+        /* RESPONSIVE HEADERS MODIFIER */
         @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 20px;
-                padding: 24px 5%;
-                background: #03000a;
-            }
-            .nav-links {
-                gap: 24px;
-            }
-            .hero p {
-                font-size: 18px;
-            }
-            section {
-                padding: 100px 6%;
-            }
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            .btn-group {
-                flex-direction: column;
-                width: 100%;
-            }
-            .btn-portfolio, .btn-whatsapp {
-                text-align: center;
-                width: 100%;
+            .hero h1 {
+                font-size: 42px;
             }
             .section-title {
-                font-size: 34px;
+                font-size: 32px;
             }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-    <div class="logo">TA<span>designer</span></div>
-    <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#work">My Work</a></li>
-        <li><a href="#contact">Hire Me</a></li>
-    </ul>
-</nav>
-
-    <header class="hero">
-        <div class="hero-content">
-            <h1>I Build Beautiful, High-Converting <span>Websites</span></h1>
-            <p>Hi, I'm TA designer. I am a Front-End Developer specializing in crafting clean responsive structures using clean semantic code.</p>
-            <div class="btn-group">
-                <a href="#work" class="btn-portfolio">See My Work</a>
-                <a href="https://wa.me/923261937058?text=Hello%20TA%20designer,%20I%20visited%20your%20portfolio%20and%20want%20to%20discuss%20a%20website%20project!" target="_blank" class="btn-whatsapp">Chat on WhatsApp</a>
+    <nav class="navbar navbar-expand-md navbar-dark custom-navbar fixed-top">
+        <div class="container">
+            <a class="logo" href="index.html">TA<span>designer</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+                <ul class="navbar-nav gap-3 mt-3 mt-md-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#work">My Work</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Hire Me</a></li>
+                </ul>
             </div>
         </div>
-        
-        <div class="hero-avatar-container">
-            <div class="avatar-wrapper">
-                <img src="my-pic.jpeg" alt="TA designer Portrait">
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <div class="row align-items-center flex-column-reverse flex-md-row g-5">
+                <div class="col-md-7 text-center text-md-start">
+                    <h1>I Build Beautiful, High-Converting <span>Websites</span></h1>
+                    <p class="my-4">Hi, I'm TA designer. I am a Front-End Developer specializing in crafting clean responsive structures using clean semantic code.</p>
+                    <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-md-start gap-3 mt-4">
+                        <a href="#work" class="btn-portfolio text-center">See My Work</a>
+                        <a href="https://wa.me/923261937058?text=Hello%20TA%20designer,%20I%20visited%20your%20portfolio%20and%20want%20to%20discuss%20a%20website%20project!" target="_blank" class="btn-whatsapp text-center">Chat on WhatsApp</a>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="avatar-wrapper">
+                        <img src="my-pic.jpeg">
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
     <section id="skills">
-        <h2 class="section-title">Technical Skills</h2>
-        <div class="skills-container">
-            <div class="skill-tag">HTML5 (Semantic Markup)</div>
-            <div class="skill-tag">CSS3 (Flexbox & Grid)</div>
-            <div class="skill-tag">Responsive Design</div>
-            <div class="skill-tag">Cross-Browser Optimization</div>
-            <div class="skill-tag">UI/UX Layout Concepts</div>
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="d-flex justify-content-center flex-wrap gap-3 max-width-1000 mx-auto text-center">
+                <div class="skill-tag">HTML5 (Semantic Markup)</div>
+                <div class="skill-tag">CSS3 (Flexbox & Grid)</div>
+                <div class="skill-tag">Responsive Design</div>
+                <div class="skill-tag">Cross-Browser Optimization</div>
+                <div class="skill-tag">UI/UX Layout Concepts</div>
+            </div>
         </div>
     </section>
 
     <section id="work">
-        <h2 class="section-title">Recent Mock Projects</h2>
-        <div class="portfolio-grid">
-            
-            <div class="project-card">
-                <div class="project-img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=500&auto=format&fit=crop&q=60');">
-                    <span>AuraRing</span>
+        <div class="container">
+            <h2 class="section-title">Recent Mock Projects</h2>
+            <div class="row g-4 justify-content-center">
+                
+                <div class="col-12 col-md-6 col-lg-5">
+                    <div class="project-card">
+                        <div class="project-img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=500&auto=format&fit=crop&q=60');">
+                            <span>AuraRing</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>Product Landing Page</h3>
+                            <p>A sleek, premium tech product launch page featuring modern typography, elegant layout structures, and mobile optimization.</p>
+                            <a href="./Project-1-AuraRing/index.html" class="btn-view" target="_blank">Launch Live Demo &rarr;</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="project-info">
-                    <h3>Product Landing Page</h3>
-                    <p>A sleek, premium tech product launch page featuring modern typography, elegant layout structures, and mobile optimization.</p>
-                    <a href="./Project-1-AuraRing/index.html" class="btn-view" target="_blank">Launch Live Demo &rarr;</a>
-                </div>
-            </div>
 
-            <div class="project-card">
-                <div class="project-img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=500&auto=format&fit=crop&q=60');">
-                    <span>IronPulse Gym</span>
+                <div class="col-12 col-md-6 col-lg-5">
+                    <div class="project-card">
+                        <div class="project-img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=500&auto=format&fit=crop&q=60');">
+                            <span>IronPulse Gym</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>Local Business Website</h3>
+                            <p>An energetic dark-mode commercial website layout built for service providers, featuring pricing matrices and clean call-to-actions.</p>
+                            <a href="./Project-2-IronPulse-Gym/index.html" class="btn-view" target="_blank">Launch Live Demo &rarr;</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="project-info">
-                    <h3>Local Business Website</h3>
-                    <p>An energetic dark-mode commercial website layout built for service providers, featuring pricing matrices and clean call-to-actions.</p>
-                    <a href="./Project-2-IronPulse-Gym/index.html" class="btn-view" target="_blank">Launch Live Demo &rarr;</a>
-                </div>
-            </div>
 
+            </div>
         </div>
     </section>
 
     <section id="contact">
-        <div class="contact-container">
-            <h2 class="section-title">Let's Work Together</h2>
-            <p>Need a fast, responsive landing page or single-page corporate site for your brand or local service company? Reach out directly via email or chat instantly via WhatsApp.</p>
-            <div class="btn-group">
-                <a href="mailto:your.email@example.com" class="btn-portfolio">Email Me Directly</a>
-                <a href="https://wa.me/923261937058?text=Hi%20TA%20designer,%20I'd%20like%20to%20get%20a%20quote%20for%20a%20website." target="_blank" class="btn-whatsapp">WhatsApp Chat</a>
+        <div class="container">
+            <div class="contact-container text-center max-width-750 mx-auto">
+                <h2 class="section-title">Let's Work Together</h2>
+                <p class="mb-5">Need a fast, responsive landing page or single-page corporate site for your brand or local service company? Reach out directly via email or chat instantly via WhatsApp.</p>
+                <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
+                    <a href="mailto:your.email@example.com" class="btn-portfolio text-center">Email Me Directly</a>
+                    <a href="https://wa.me/923261937058?text=Hi%20TA%20designer,%20I'd%20like%20to%20get%20a%20quote%20for%20a%20website." target="_blank" class="btn-whatsapp text-center">WhatsApp Chat</a>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 TA designer. Powered by Pure HTML & CSS.</p>
+        <div class="container">
+            <p class="m-0">&copy; 2026 TA designer. Powered by Bootstrap, HTML & CSS.</p>
+        </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

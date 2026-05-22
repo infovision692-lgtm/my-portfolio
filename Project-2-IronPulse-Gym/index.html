@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IronPulse Fitness - Premium Local Gym</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -21,22 +24,10 @@
             --accent-green: #25d366;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: var(--font-body);
-            -webkit-font-smoothing: antialiased;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* CHROMATIC MESH GRADIENT CANVAS */
         body {
             color: var(--text-secondary);
-            line-height: 1.6;
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
             background-color: #03000a;
             background-image: 
@@ -62,7 +53,7 @@
         }
 
         section {
-            padding: 140px 10%;
+            padding: 100px 0;
             position: relative;
             z-index: 1;
         }
@@ -92,7 +83,6 @@
             font-family: var(--font-display);
             font-size: 46px;
             font-weight: 900;
-            margin-bottom: 60px;
             text-align: center;
             letter-spacing: -1px;
             text-transform: uppercase;
@@ -110,68 +100,47 @@
         }
 
         /* FIXED GLASSMORPHIC NAVIGATION */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px 10%;
-            background: rgba(3, 0, 10, 0.7);
+        .navbar {
+            background: rgba(3, 0, 10, 0.7) !important;
             backdrop-filter: blur(24px) saturate(180%);
             -webkit-backdrop-filter: blur(24px) saturate(180%);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            z-index: 1000;
         }
 
         /* LOGO STYLE */
-        .logo {
+        .navbar-brand {
             font-family: var(--font-display);
             font-size: 28px;
             font-weight: 900;
             letter-spacing: -0.5px;
             text-transform: uppercase;
             animation: globalColorShift 6s infinite ease-in-out;
-            display: inline-block;
-            cursor: default;
         }
 
-        .logo span {
+        .navbar-brand span {
             font-weight: 900;
             animation: spanColorShift 4s infinite ease-in-out;
         }
 
-        /* NAV LINKS WITH INTERACTIVE SHIFT */
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 40px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
+        /* NAV LINKS */
+        .nav-link {
             font-weight: 600;
             font-size: 14px;
             letter-spacing: 0.5px;
             animation: globalColorShift 6s infinite ease-in-out;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease !important;
         }
 
-        .nav-links a:hover {
+        .nav-link:hover {
             transform: scale(1.05);
         }
 
-        /* HERO SECTION WITH BACKGROUND PANNING */
+        /* HERO SECTION */
         .hero {
             position: relative;
-            height: 85vh;
+            min-height: 85vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
             overflow: hidden;
             padding-top: 140px;
         }
@@ -190,11 +159,9 @@
             font-size: 74px;
             font-weight: 900;
             line-height: 1.1;
-            margin-bottom: 24px;
             letter-spacing: -2px;
             text-transform: uppercase;
             animation: globalColorShift 6s infinite ease-in-out;
-            max-width: 900px;
         }
 
         .hero h1 span {
@@ -204,9 +171,7 @@
         .hero p {
             font-size: 22px;
             color: var(--text-secondary);
-            margin-bottom: 44px;
             font-weight: 300;
-            max-width: 700px;
         }
 
         /* INTERACTIVE BUTTONS */
@@ -232,20 +197,13 @@
             box-shadow: 0 15px 30px rgba(255, 255, 255, 0.1);
         }
 
-        /* SERVICES GRID */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-        }
-
+        /* SERVICES */
         .service-card {
             background: rgba(10, 5, 22, 0.4);
-            border-radius: 12px;
-            overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.04);
             backdrop-filter: blur(20px);
             transition: all 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+            height: 100%;
         }
 
         .service-card:hover {
@@ -268,15 +226,10 @@
             animation: slowPanImage 20s infinite ease-in-out;
         }
 
-        .service-info {
-            padding: 40px;
-        }
-
         .service-info h3 {
             font-family: var(--font-display);
             font-size: 26px;
             font-weight: 800;
-            margin-bottom: 12px;
             letter-spacing: -0.5px;
             text-transform: uppercase;
             animation: globalColorShift 6s infinite ease-in-out;
@@ -290,27 +243,13 @@
         }
 
         /* MEMBERSHIP PRICING ARCHITECTURE */
-        #pricing {
-            position: relative;
-        }
-
-        .pricing-container {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
         .price-card {
             background: rgba(10, 5, 22, 0.4);
-            padding: 50px 40px;
-            width: 340px;
-            text-align: center;
-            border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.04);
             backdrop-filter: blur(20px);
             position: relative;
             transition: all 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+            height: 100%;
         }
 
         .price-card:hover {
@@ -323,7 +262,7 @@
             box-shadow: 0 15px 35px rgba(168, 85, 247, 0.1);
         }
 
-        .badge {
+        .custom-badge {
             position: absolute;
             top: -16px;
             left: 50%;
@@ -343,7 +282,6 @@
             text-transform: uppercase;
             font-size: 24px;
             font-weight: 800;
-            margin-bottom: 20px;
             letter-spacing: 0.5px;
             animation: globalColorShift 6s infinite ease-in-out;
         }
@@ -352,7 +290,6 @@
             font-family: var(--font-display);
             font-size: 54px;
             font-weight: 900;
-            margin-bottom: 25px;
             animation: spanColorShift 4s infinite ease-in-out;
         }
 
@@ -369,24 +306,14 @@
             color: var(--text-secondary);
         }
 
-        /* PREMIUM GLASS CONTACT CONSOLE */
+        /* CONTACT CONSOLE */
         .contact-box {
-            max-width: 650px;
-            margin: 0 auto;
             background: rgba(10, 5, 22, 0.4);
-            padding: 50px;
-            border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.04);
             backdrop-filter: blur(20px);
         }
 
-        .form-group {
-            margin-bottom: 24px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 10px;
+        .form-label-custom {
             text-transform: uppercase;
             font-size: 12px;
             font-weight: bold;
@@ -394,22 +321,22 @@
             color: var(--text-primary);
         }
 
-        .form-group input, .form-group textarea {
+        .form-control-custom {
             width: 100%;
             padding: 16px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
             border-radius: 4px;
-            color: white;
+            color: white !important;
             font-size: 15px;
             transition: all 0.3s ease;
         }
 
-        .form-group input:focus, .form-group textarea:focus {
+        .form-control-custom:focus {
             outline: none;
-            border-color: var(--accent-cyan);
-            background: rgba(6, 182, 212, 0.02);
-            box-shadow: 0 0 20px rgba(6, 182, 212, 0.1);
+            border-color: var(--accent-cyan) !important;
+            background: rgba(6, 182, 212, 0.02) !important;
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.1) !important;
         }
 
         .btn-submit {
@@ -434,20 +361,7 @@
         }
 
         /* RESPONSIVE RESPONSIVENESS MATRIX */
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 20px;
-                padding: 24px 5%;
-                background: #03000a;
-            }
-            .nav-links {
-                gap: 24px;
-            }
-            .hero {
-                height: auto;
-                padding: 180px 6% 100px 6%;
-            }
+        @media (max-width: 991.98px) {
             .hero h1 {
                 font-size: 42px;
                 letter-spacing: -1px;
@@ -455,105 +369,120 @@
             .hero p {
                 font-size: 18px;
             }
-            .pricing-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            .price-card {
-                width: 100%;
-            }
-            section {
-                padding: 100px 6%;
-            }
             .section-title {
                 font-size: 34px;
-            }
-            .contact-box {
-                padding: 30px;
             }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">IRON<span>PULSE</span></div>
-        <ul class="nav-links">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#pricing">Membership</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3">
+        <div class="container px-4 px-md-5">
+            <a class="navbar-brand" href="#">IRON<span>PULSE</span></a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav gap-lg-4 text-center mt-3 mt-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing">Membership</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
-    <header class="hero">
+    <header class="hero text-center">
         <div class="hero-bg"></div>
-        <h1>No Gimmicks. Just <span>Results.</span></h1>
-        <p>Your journey to elite fitness starts at your neighborhood's premier training facility.</p>
-        <a href="#contact" class="btn-cta">Get A Free Pass</a>
+        <div class="container px-4 px-md-5 d-flex flex-column align-items-center">
+            <h1 class="mb-4 mx-auto style-title" style="max-width: 900px;">No Gimmicks. Just <span>Results.</span></h1>
+            <p class="mb-4 pb-2 mx-auto" style="max-width: 700px;">Your journey to elite fitness starts at your neighborhood's premier training facility.</p>
+            <a href="#contact" class="btn-cta w-100 w-sm-auto">Get A Free Pass</a>
+        </div>
     </header>
 
     <section id="services">
-        <h2 class="section-title">Our Programs</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-img-wrapper">
-                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60');"></div>
+        <div class="container px-4 px-md-5">
+            <h2 class="section-title mb-5 pb-3">Our Programs</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-5">
+                    <div class="service-card rounded-3 overflow-hidden">
+                        <div class="service-img-wrapper">
+                            <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60');"></div>
+                        </div>
+                        <div class="service-info p-4">
+                            <h3 class="mb-2">Free Weights & Strength</h3>
+                            <p class="mb-0">Access to professional-grade equipment, dumbbells up to 150lbs, and dedicated lifting platforms.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="service-info">
-                    <h3>Free Weights & Strength</h3>
-                    <p>Access to professional-grade equipment, dumbbells up to 150lbs, and dedicated lifting platforms.</p>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-img-wrapper">
-                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=500&auto=format&fit=crop&q=60');"></div>
-                </div>
-                <div class="service-info">
-                    <h3>Cardio & Conditioning</h3>
-                    <p>Rowers, custom treadmills, and high-intensity interval gear to spike your metabolism.</p>
+                <div class="col-md-6 col-lg-5">
+                    <div class="service-card rounded-3 overflow-hidden">
+                        <div class="service-img-wrapper">
+                            <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=500&auto=format&fit=crop&q=60');"></div>
+                        </div>
+                        <div class="service-info p-4">
+                            <h3 class="mb-2">Cardio & Conditioning</h3>
+                            <p class="mb-0">Rowers, custom treadmills, and high-intensity interval gear to spike your metabolism.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="pricing">
-        <h2 class="section-title">Membership Plans</h2>
-        <div class="pricing-container">
-            <div class="price-card">
-                <h3>Basic</h3>
-                <div class="price">$29<span>/mo</span></div>
-                <p>Gym access during off-peak hours, basic locker room use, and 1 free personal assessment.</p>
-            </div>
-            <div class="price-card featured">
-                <div class="badge">Most Popular</div>
-                <h3>Elite Pass</h3>
-                <div class="price">$59<span>/mo</span></div>
-                <p>24/7 unlimited access, all group fitness classes included, and monthly guest passes.</p>
+        <div class="container px-4 px-md-5">
+            <h2 class="section-title mb-5 pb-3">Membership Plans</h2>
+            <div class="row g-5 justify-content-center align-items-stretch">
+                <div class="col-md-6 col-lg-4">
+                    <div class="price-card p-5 rounded-3 text-center">
+                        <h3 class="mb-3">Basic</h3>
+                        <div class="price mb-4">$29<span>/mo</span></div>
+                        <p class="mb-0">Gym access during off-peak hours, basic locker room use, and 1 free personal assessment.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="price-card featured p-5 rounded-3 text-center">
+                        <div class="custom-badge">Most Popular</div>
+                        <h3 class="mb-3">Elite Pass</h3>
+                        <div class="price mb-4">$59<span>/mo</span></div>
+                        <p class="mb-0">24/7 unlimited access, all group fitness classes included, and monthly guest passes.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="contact">
-        <h2 class="section-title">Claim Your Free Day Pass</h2>
-        <div class="contact-box">
-            <form action="#" method="POST" onsubmit="alert('Demo submitted successfully!'); return false;">
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" required>
+        <div class="container px-4 px-md-5">
+            <h2 class="section-title mb-5 pb-3">Claim Your Free Day Pass</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="contact-box p-4 p-md-5 rounded-3">
+                        <form action="#" method="POST" onsubmit="alert('Demo submitted successfully!'); return false;">
+                            <div class="mb-4">
+                                <label for="name" class="form-label form-label-custom mb-2">Full Name</label>
+                                <input type="text" id="name" class="form-control form-control-custom" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="form-label form-label-custom mb-2">Email Address</label>
+                                <input type="email" id="email" class="form-control form-control-custom" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="form-label form-label-custom mb-2">Why do you want to join IronPulse?</label>
+                                <textarea id="message" class="form-control form-control-custom" rows="4"></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit mt-2">Send Me My Pass</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Why do you want to join IronPulse?</label>
-                    <textarea id="message" rows="4"></textarea>
-                </div>
-                <button type="submit" class="btn-submit">Send Me My Pass</button>
-            </form>
+            </div>
         </div>
     </section>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
