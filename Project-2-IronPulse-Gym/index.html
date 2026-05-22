@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IronPulse Fitness - Premium Local Gym</title>
+    <style>
+        /* RESET & BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        section {
+            padding: 80px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+            color: #ff3e3e; /* Energetic red accent color */
+        }
+
+        /* NAVIGATION */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 10%;
+            background-color: #000000;
+            border-bottom: 2px solid #ff3e3e;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 900;
+            font-style: italic;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #ff3e3e;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff3e3e;
+        }
+
+        /* HERO SECTION - Updated with Male Athlete Background */
+        .hero {
+            position: relative;
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=1200&auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: #cccccc;
+        }
+
+        .btn-cta {
+            background-color: #ff3e3e;
+            color: #ffffff;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn-cta:hover {
+            background-color: #cc2424;
+            transform: scale(1.05);
+        }
+
+        /* SERVICES GRID */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: #ff3e3e;
+        }
+
+        .service-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .service-info {
+            padding: 25px;
+        }
+
+        .service-info h3 {
+            font-size: 22px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        /* PRICING CARDS */
+        #pricing {
+            background-color: #0a0a0a;
+        }
+
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .price-card {
+            background-color: #1a1a1a;
+            padding: 40px 30px;
+            width: 300px;
+            text-align: center;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .price-card.featured {
+            border: 2px solid #ff3e3e;
+        }
+
+        .badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ff3e3e;
+            padding: 5px 15px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .price-card h3 {
+            text-transform: uppercase;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 40px;
+            font-weight: bold;
+            color: #ff3e3e;
+            margin-bottom: 25px;
+        }
+
+        .price span {
+            font-size: 16px;
+            color: #aaa;
+        }
+
+        /* CONTACT FORM */
+        .contact-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #1a1a1a;
+            padding: 40px;
+            border-radius: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: #333;
+            border: 1px solid #444;
+            color: white;
+            font-size: 16px;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #ff3e3e;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: #ff3e3e;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #cc2424;
+        }
+
+        /* MOBILE RESPONSIVENESS */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 38px;
+            }
+            .pricing-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">IRON<span>PULSE</span></div>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#pricing">Membership</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>No Gimmicks. Just Results.</h1>
+        <p>Your journey to elite fitness starts at your neighborhood's premier training facility.</p>
+        <a href="#contact" class="btn-cta">Get A Free Pass</a>
+    </header>
+
+    <section id="services">
+        <h2 class="section-title">Our Programs</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60" alt="Heavy Weight Training" class="service-img">
+                <div class="service-info">
+                    <h3>Free Weights & Strength</h3>
+                    <p>Access to professional-grade equipment, dumbbells up to 150lbs, and dedicated lifting platforms.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=500&auto=format&fit=crop&q=60" alt="Athletic Conditioning" class="service-img">
+                <div class="service-info">
+                    <h3>Cardio & Conditioning</h3>
+                    <p>Rowers, custom treadmills, and high-intensity interval gear to spike your metabolism.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <h2 class="section-title">Membership Plans</h2>
+        <div class="pricing-container">
+            <div class="price-card">
+                <h3>Basic</h3>
+                <div class="price">$29<span>/mo</span></div>
+                <p>Gym access during off-peak hours, basic locker room use, and 1 free personal assessment.</p>
+            </div>
+            <div class="price-card featured">
+                <div class="badge">Most Popular</div>
+                <h3>Elite Pass</h3>
+                <div class="price">$59<span>/mo</span></div>
+                <p>24/7 unlimited access, all group fitness classes included, and monthly guest passes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Claim Your Free Day Pass</h2>
+        <div class="contact-box">
+            <form action="#" method="POST" onsubmit="alert('Demo submitted successfully!'); return false;">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Why do you want to join IronPulse?</label>
+                    <textarea id="message" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Send Me My Pass</button>
+            </form>
+        </div>
+    </section>
+
+</body>
+</html>
