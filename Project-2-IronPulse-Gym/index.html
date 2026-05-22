@@ -4,275 +4,472 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IronPulse Fitness - Premium Local Gym</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
-        /* RESET & BASE STYLES */
+        /* CORE RESET & HIGH-LEVEL VISUAL ENGINE */
+        :root {
+            --font-display: 'Cabinet Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --text-primary: #ffffff;
+            --text-secondary: #b4c6ef;
+            --accent-purple: #a855f7;
+            --accent-pink: #f43f5e;
+            --accent-cyan: #06b6d4;
+            --accent-green: #25d366;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased;
         }
 
         html {
             scroll-behavior: smooth;
         }
 
+        /* CHROMATIC MESH GRADIENT CANVAS */
         body {
-            background-color: #121212;
-            color: #ffffff;
+            color: var(--text-secondary);
             line-height: 1.6;
+            overflow-x: hidden;
+            background-color: #03000a;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(168, 85, 247, 0.2) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.2) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(244, 63, 94, 0.1) 0px, transparent 45%),
+                radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.15) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(6, 182, 212, 0.12) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        /* Digital Architecture Grid Overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 80px 80px;
+            z-index: 0;
+            pointer-events: none;
         }
 
         section {
-            padding: 80px 10%;
+            padding: 140px 10%;
+            position: relative;
+            z-index: 1;
         }
 
+        /* UNIVERSAL BROWSER COMPATIBLE COLOR SHIFT ANIMATIONS */
+        @keyframes globalColorShift {
+            0% { color: #ffffff; text-shadow: 0 0 15px rgba(255, 255, 255, 0.2); }
+            33% { color: var(--accent-cyan); text-shadow: 0 0 20px rgba(6, 182, 212, 0.5); }
+            66% { color: var(--accent-pink); text-shadow: 0 0 20px rgba(244, 63, 94, 0.5); }
+            100% { color: #ffffff; text-shadow: 0 0 15px rgba(255, 255, 255, 0.2); }
+        }
+
+        @keyframes spanColorShift {
+            0% { color: var(--accent-purple); text-shadow: 0 0 15px rgba(168, 85, 247, 0.4); }
+            50% { color: #ffffff; text-shadow: 0 0 20px rgba(255, 255, 255, 0.4); }
+            100% { color: var(--accent-purple); text-shadow: 0 0 15px rgba(168, 85, 247, 0.4); }
+        }
+
+        @keyframes slowPanImage {
+            0% { background-position: center 0%; }
+            50% { background-position: center 100%; }
+            100% { background-position: center 0%; }
+        }
+
+        /* APPLICATION OF CHROMATIC ANIMATION TO HEADINGS */
         .section-title {
+            font-family: var(--font-display);
+            font-size: 46px;
+            font-weight: 900;
+            margin-bottom: 60px;
             text-align: center;
-            font-size: 36px;
+            letter-spacing: -1px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 50px;
-            color: #ff3e3e; /* Energetic red accent color */
+            animation: globalColorShift 6s infinite ease-in-out;
         }
 
-        /* NAVIGATION */
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            margin: 20px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* FIXED GLASSMORPHIC NAVIGATION */
         nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 10%;
-            background-color: #000000;
-            border-bottom: 2px solid #ff3e3e;
+            padding: 24px 10%;
+            background: rgba(3, 0, 10, 0.7);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 1000;
         }
 
+        /* LOGO STYLE */
         .logo {
-            font-size: 26px;
+            font-family: var(--font-display);
+            font-size: 28px;
             font-weight: 900;
-            font-style: italic;
-            color: #ffffff;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+            animation: globalColorShift 6s infinite ease-in-out;
+            display: inline-block;
+            cursor: default;
         }
 
         .logo span {
-            color: #ff3e3e;
+            font-weight: 900;
+            animation: spanColorShift 4s infinite ease-in-out;
         }
 
+        /* NAV LINKS WITH INTERACTIVE SHIFT */
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 30px;
+            gap: 40px;
         }
 
         .nav-links a {
-            color: #ffffff;
             text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
+            font-weight: 600;
             font-size: 14px;
-            transition: color 0.3s;
+            letter-spacing: 0.5px;
+            animation: globalColorShift 6s infinite ease-in-out;
+            transition: transform 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: #ff3e3e;
+            transform: scale(1.05);
         }
 
-        /* HERO SECTION - Updated with Male Athlete Background */
+        /* HERO SECTION WITH BACKGROUND PANNING */
         .hero {
             position: relative;
-            height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=1200&auto=format&fit=crop&q=80');
-            background-size: cover;
-            background-position: center;
+            height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            overflow: hidden;
+            padding-top: 140px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(3, 0, 10, 0.75), rgba(3, 0, 10, 0.85)), url('https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=1200&auto=format&fit=crop&q=80');
+            background-size: cover;
+            animation: slowPanImage 25s infinite ease-in-out;
+            z-index: -1;
         }
 
         .hero h1 {
-            font-size: 60px;
-            text-transform: uppercase;
+            font-family: var(--font-display);
+            font-size: 74px;
             font-weight: 900;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+            animation: globalColorShift 6s infinite ease-in-out;
+            max-width: 900px;
+        }
+
+        .hero h1 span {
+            animation: spanColorShift 4s infinite ease-in-out;
         }
 
         .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-            color: #cccccc;
+            font-size: 22px;
+            color: var(--text-secondary);
+            margin-bottom: 44px;
+            font-weight: 300;
+            max-width: 700px;
         }
 
+        /* INTERACTIVE BUTTONS */
         .btn-cta {
-            background-color: #ff3e3e;
-            color: #ffffff;
-            padding: 15px 40px;
+            display: inline-block;
+            background: var(--text-primary);
+            color: #03000a;
+            padding: 18px 42px;
+            border-radius: 4px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: background 0.3s, transform 0.2s;
+            transition: all 0.3s cubic-bezier(0.2, 1, 0.2, 1);
+            border: 1px solid var(--text-primary);
         }
 
         .btn-cta:hover {
-            background-color: #cc2424;
-            transform: scale(1.05);
+            background: transparent;
+            color: var(--text-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.1);
         }
 
         /* SERVICES GRID */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
         }
 
         .service-card {
-            background-color: #1a1a1a;
-            border: 1px solid #333;
+            background: rgba(10, 5, 22, 0.4);
+            border-radius: 12px;
             overflow: hidden;
-            transition: border-color 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.2, 1);
         }
 
         .service-card:hover {
-            border-color: #ff3e3e;
+            transform: translateY(-12px);
+            border-color: rgba(168, 85, 247, 0.3);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(168, 85, 247, 0.05);
+        }
+
+        .service-img-wrapper {
+            width: 100%;
+            height: 260px;
+            overflow: hidden;
+            position: relative;
         }
 
         .service-img {
             width: 100%;
-            height: 250px;
-            object-fit: cover;
+            height: 100%;
+            background-size: cover;
+            animation: slowPanImage 20s infinite ease-in-out;
         }
 
         .service-info {
-            padding: 25px;
+            padding: 40px;
         }
 
         .service-info h3 {
-            font-size: 22px;
+            font-family: var(--font-display);
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            animation: globalColorShift 6s infinite ease-in-out;
         }
 
-        /* PRICING CARDS */
+        .service-info p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        /* MEMBERSHIP PRICING ARCHITECTURE */
         #pricing {
-            background-color: #0a0a0a;
+            position: relative;
         }
 
         .pricing-container {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 40px;
             flex-wrap: wrap;
         }
 
         .price-card {
-            background-color: #1a1a1a;
-            padding: 40px 30px;
-            width: 300px;
+            background: rgba(10, 5, 22, 0.4);
+            padding: 50px 40px;
+            width: 340px;
             text-align: center;
-            border-radius: 5px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
             position: relative;
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+        }
+
+        .price-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
         .price-card.featured {
-            border: 2px solid #ff3e3e;
+            border: 2px solid var(--accent-purple);
+            box-shadow: 0 15px 35px rgba(168, 85, 247, 0.1);
         }
 
         .badge {
             position: absolute;
-            top: -15px;
+            top: -16px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: #ff3e3e;
-            padding: 5px 15px;
-            font-size: 12px;
-            font-weight: bold;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink));
+            padding: 6px 20px;
+            font-size: 11px;
+            font-weight: 800;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            color: #ffffff;
         }
 
         .price-card h3 {
+            font-family: var(--font-display);
             text-transform: uppercase;
-            font-size: 20px;
-            margin-bottom: 15px;
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            animation: globalColorShift 6s infinite ease-in-out;
         }
 
         .price {
-            font-size: 40px;
-            font-weight: bold;
-            color: #ff3e3e;
+            font-family: var(--font-display);
+            font-size: 54px;
+            font-weight: 900;
             margin-bottom: 25px;
+            animation: spanColorShift 4s infinite ease-in-out;
         }
 
         .price span {
+            font-family: var(--font-body);
             font-size: 16px;
-            color: #aaa;
+            color: var(--text-secondary);
+            font-weight: 400;
         }
 
-        /* CONTACT FORM */
+        .price-card p {
+            font-size: 15px;
+            font-weight: 300;
+            color: var(--text-secondary);
+        }
+
+        /* PREMIUM GLASS CONTACT CONSOLE */
         .contact-box {
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
-            background-color: #1a1a1a;
-            padding: 40px;
-            border-radius: 5px;
+            background: rgba(10, 5, 22, 0.4);
+            padding: 50px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             text-transform: uppercase;
             font-size: 12px;
             font-weight: bold;
+            letter-spacing: 1px;
+            color: var(--text-primary);
         }
 
         .form-group input, .form-group textarea {
             width: 100%;
-            padding: 12px;
-            background-color: #333;
-            border: 1px solid #444;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
             color: white;
-            font-size: 16px;
+            font-size: 15px;
+            transition: all 0.3s ease;
         }
 
         .form-group input:focus, .form-group textarea:focus {
             outline: none;
-            border-color: #ff3e3e;
+            border-color: var(--accent-cyan);
+            background: rgba(6, 182, 212, 0.02);
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.1);
         }
 
         .btn-submit {
             width: 100%;
-            background-color: #ff3e3e;
-            color: white;
+            background: var(--text-primary);
+            color: #03000a;
             border: none;
-            padding: 15px;
-            font-size: 16px;
-            font-weight: bold;
+            padding: 18px;
+            font-size: 15px;
+            font-weight: 600;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
             cursor: pointer;
-            transition: background 0.3s;
+            border-radius: 4px;
+            transition: all 0.3s ease;
         }
 
         .btn-submit:hover {
-            background-color: #cc2424;
+            background: var(--accent-purple);
+            color: white;
+            box-shadow: 0 10px 25px rgba(168, 85, 247, 0.3);
         }
 
-        /* MOBILE RESPONSIVENESS */
+        /* RESPONSIVE RESPONSIVENESS MATRIX */
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
-                gap: 15px;
+                gap: 20px;
+                padding: 24px 5%;
+                background: #03000a;
+            }
+            .nav-links {
+                gap: 24px;
+            }
+            .hero {
+                height: auto;
+                padding: 180px 6% 100px 6%;
             }
             .hero h1 {
-                font-size: 38px;
+                font-size: 42px;
+                letter-spacing: -1px;
+            }
+            .hero p {
+                font-size: 18px;
             }
             .pricing-container {
                 flex-direction: column;
                 align-items: center;
+            }
+            .price-card {
+                width: 100%;
+            }
+            section {
+                padding: 100px 6%;
+            }
+            .section-title {
+                font-size: 34px;
+            }
+            .contact-box {
+                padding: 30px;
             }
         }
     </style>
@@ -289,7 +486,8 @@
     </nav>
 
     <header class="hero">
-        <h1>No Gimmicks. Just Results.</h1>
+        <div class="hero-bg"></div>
+        <h1>No Gimmicks. Just <span>Results.</span></h1>
         <p>Your journey to elite fitness starts at your neighborhood's premier training facility.</p>
         <a href="#contact" class="btn-cta">Get A Free Pass</a>
     </header>
@@ -298,14 +496,18 @@
         <h2 class="section-title">Our Programs</h2>
         <div class="services-grid">
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60" alt="Heavy Weight Training" class="service-img">
+                <div class="service-img-wrapper">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60');"></div>
+                </div>
                 <div class="service-info">
                     <h3>Free Weights & Strength</h3>
                     <p>Access to professional-grade equipment, dumbbells up to 150lbs, and dedicated lifting platforms.</p>
                 </div>
             </div>
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=500&auto=format&fit=crop&q=60" alt="Athletic Conditioning" class="service-img">
+                <div class="service-img-wrapper">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=500&auto=format&fit=crop&q=60');"></div>
+                </div>
                 <div class="service-info">
                     <h3>Cardio & Conditioning</h3>
                     <p>Rowers, custom treadmills, and high-intensity interval gear to spike your metabolism.</p>
